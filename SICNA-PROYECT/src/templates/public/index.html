@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}- Inicio{% endblock %}
+{% block content %}
+<main id="main">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-lg-12 d-flex">
+                <div id="content-main" class="justify-content-center align-self-center mx-auto my-5">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h2>Crear producto</h2>
+                        </div>
+                        <div class="card-body">
+                            <form action="/" method="POST" class="px-5">
+                                <div class="md-form row">
+                                    <div class="col">
+                                        <input type="number" name="code" class="form-control" id="codeInput" required
+                                            autofocus>
+                                        <label for="codeInput">Código</label>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="name" class="form-control" id="nameInput" required>
+                                        <label for="nameInput">Nombre</label>
+                                    </div>
+                                </div>
+                                <div class="md-form row">
+                                    <div class="col">
+                                        <input type="number" name="stock" class="form-control" id="stockInput" required>
+                                        <label for="stockInput">Disponibilidad</label>
+                                    </div>
+                                    <div class="col">
+                                        <input type="number" name="value" class="form-control" id="valueInput" required>
+                                        <label for="valueInput">Valor</label>
+                                    </div>
+                                </div>
+                                <div class="md-form">
+                                    <select name="category" class="mdb-select" id="categoryInput">
+                                        <option selected>Seleccionar categoría</option>
+                                        {% for categorie in categories %}
+                                        <option value="{{categorie.0}}">{{categorie.1}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="md-form">
+                                    <button class="btn btn-primary btn-block">
+                                        Crear <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<section id="products">
+    <div class="container-fluid">
+        <div class="row">
+            {% for product in data %}
+            <div class="col-lg-4 d-flex">
+                <div id="content-products" class="justify-content-center align-self-center mx-auto my-3">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            Producto: {{product.0}}
+                        </div>
+                        <div class="card-body elegant-color white-text rounded-bottom">
+                            <h4 class="card-title">
+                                <span>Nombre: {{product.1}}</span>
+                            </h4>
+                            <hr class="hr-light">
+                            <p class="card-text white-text mb-4">
+                                <span>Disponibilidad: {{product.2}}</span>
+                                <span>Precio: {{product.3}}</span>
+                            </p>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-primary btn-sm">
+                                    Categoría: {{product.4}}
+                                </button>
+                                <form action="/delete/product/{{product.0}}" method="POST">
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                                <a href="/update/product/{{product.0}}" type="button" class="btn btn-warning btn-sm">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-lg-12 d-flex">
+                <div id="content-products" class="justify-content-center align-self-center mx-auto my-3 text-center">
+                    <h2>No hay productos para mostrar</h2>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
