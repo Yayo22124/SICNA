@@ -10,7 +10,6 @@
 
 ![Static Badge](https://img.shields.io/badge/stable%20version-%20-orange?style=for-the-badge)
 
-![GitHub contributors](https://img.shields.io/github/contributors/Yayo22124/SazonMaXico?style=for-the-badge&logo=github&color=ffffff)
 
 # Documentación del Proyecto
 
@@ -67,7 +66,7 @@ El sistema también brindará a los administradores universitarios las herramien
             José Alejandro Briona Arroyo <br>
             Octavio López Martínez<br>
             Luis Abdiel Rivera Gayosso <br>
-            Jesús Antonio Bezos Jímenez 
+            Jesús Antonio Entradas Jímenez 
         </td>
     </tr>
 </table>
